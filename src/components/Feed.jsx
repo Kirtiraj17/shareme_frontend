@@ -13,15 +13,18 @@ const Feed = () => {
   useEffect(() => {
     setLoading(true);
     if (categoryId) {
+      setLoading(true);
       const query = searchQuery(categoryId);
-
-      client.fetch(query)
+      client
+        .fetch(query)
         .then((data) => {
           setPins(data);
           setLoading(false);
         });
     } else {
-      client.fetch(feedQuery)
+      setLoading(true);
+      client
+        .fetch(feedQuery)
         .then((data) => {
           setPins(data);
           setLoading(false);
