@@ -19,16 +19,13 @@ const Home = () => {
   //     ? JSON.parse(localStorage.getItem("user"))
   //     : localStorage.clear();    // Moved to utils
   const userInfo = fetchUser();
-  console.log("userInfo: ", userInfo)
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
-    console.log("query: ", query)
 
     client.fetch(query)
       .then((data) => {
         setUser(data[0]);
-        console.log('user: ', user)
       });
   }, []);
 
